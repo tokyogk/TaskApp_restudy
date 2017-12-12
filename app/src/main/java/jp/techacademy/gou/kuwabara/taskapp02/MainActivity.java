@@ -9,6 +9,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import io.realm.Realm;
@@ -33,6 +35,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button button = (Button) findViewById(R.id.serch_button);
+        EditText editText = (EditText) findViewById(R.id.serchcate_edit_text);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    // Realmデータベースから、「全てのデータを検索して、カテゴリーのおなじもの」を取得
+                    RealmResults<Task> taskRealmResults = mRealm.where(Task.class).equalTo("category", serchcate_edit_text.getText().toString() ).findAll();
+                    // 上記の結果を、TaskList としてセットする
+                    mTaskAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
+                    // TaskのListView用のアダプタに渡す
+                    mListView.setAdapter(mTaskAdapter);
+                    // 表示を更新するために、アダプターにデータが変更されたことを知らせる
+                    mTaskAdapter.notifyDataSetChanged();
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -132,4 +151,6 @@ public class MainActivity extends AppCompatActivity {
 
         mRealm.close();
     }
+
+
 }

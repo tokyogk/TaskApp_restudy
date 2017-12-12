@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="jp.techacademy.gou.kuwabara.taskapp02.MainActivity">
+
+    <EditText
+        android:id="@+id/serchcate_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="ここに調べたいカテゴリを入力してください"/>
+
+    <Button
+        android:id="@+id/serch_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="カテゴリ検索" />
 
     <ListView
         android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="375dp"
+        android:layout_gravity="bottom|end" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -20,6 +35,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/plus"
-        app:backgroundTint="@color/colorPrimary"/>
+        app:backgroundTint="@color/colorPrimary" />
 
-</android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>

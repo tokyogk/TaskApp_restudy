@@ -10,6 +10,7 @@ public class Task extends RealmObject implements Serializable {
     private String title; // タイトル
     //⬇課題用に追加
     private String category; //カテゴリー
+    private String categoryserchtext;//カテゴリー検索
     private String contents; // 内容
     private Date date; // 日時
 
@@ -33,6 +34,15 @@ public class Task extends RealmObject implements Serializable {
     //⬇課題用に追加
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    //⬇課題用に追加
+    public String getCategoryserchtext() {
+        return categoryserchtext;
+    }
+    //⬇課題用に追加
+    public void setCategoryserchtext(String categoryserchtext) {
+        this.categoryserchtext = categoryserchtext;
     }
 
     public String getContents() {
