@@ -23,7 +23,7 @@
         </activity>
         <activity
             android:name=".InputActivity"
-            android:label="タスク"
+            android:label="タスク入力画面"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

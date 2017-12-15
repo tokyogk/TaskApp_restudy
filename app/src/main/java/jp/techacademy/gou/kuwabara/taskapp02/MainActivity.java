@@ -30,21 +30,24 @@ public class MainActivity extends AppCompatActivity {
     };
     private ListView mListView;
     private TaskAdapter mTaskAdapter;
+    private EditText mEditText;//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         Button button = (Button) findViewById(R.id.serch_button);
-        EditText editText = (EditText) findViewById(R.id.serchcate_edit_text);
+        mEditText = (EditText) findViewById(R.id.serchcate_edit_text);//
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                     // Realmデータベースから、「全てのデータを検索して、カテゴリーのおなじもの」を取得
-                    RealmResults<Task> taskRealmResults = mRealm.where(Task.class).equalTo("category", serchcate_edit_text.getText().toString() ).findAll();
-                    // 上記の結果を、TaskList としてセットする
+                RealmResults<Task> taskRealmResults = mRealm.where(Task.class).equalTo("category", mEditText.getText().toString() ).findAll();                    // 上記の結果を、TaskList としてセットする
                     mTaskAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
                     // TaskのListView用のアダプタに渡す
                     mListView.setAdapter(mTaskAdapter);

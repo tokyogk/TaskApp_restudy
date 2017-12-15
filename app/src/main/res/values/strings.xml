@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">TaskApp02</string>
+    <string name="app_name">タスク管理アプリ</string>
     <string name="action_settings">Settings</string>
 </resources>
